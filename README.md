@@ -8,9 +8,8 @@ Built using **React.js, Node.js, Express.js, MongoDB**, and deployed online.
 
 # Live Demo
 
-Frontend URL: Add your deployed frontend link here  
-Backend URL: Add your deployed backend link here
-
+Frontend URL: https://team-task-manager-blue-seven.vercel.app/
+Backend URL: https://team-task-manager-production-2a29.up.railway.app
 ---
 
 # Features
