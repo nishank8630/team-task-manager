@@ -44,12 +44,14 @@ const User = require("../models/User");
 /* REGISTER */
 router.post("/register", async (req, res) => {
   try {
-    const { name, email, password} = req.body;
+    const { name, email, password, role } = req.body;
 
     const oldUser = await User.findOne({ email });
 
     if (oldUser) {
-      return res.status(400).json({ message: "User already exists" });
+      return res.status(400).json({
+        message: "User already exists"
+      });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -58,7 +60,7 @@ router.post("/register", async (req, res) => {
       name,
       email,
       password: hashedPassword,
-
+      role: role || "member"
     });
 
     res.json({
@@ -67,8 +69,11 @@ router.post("/register", async (req, res) => {
     });
 
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Register Error" });
+    console.log("REGISTER ERROR:", error);
+
+    res.status(500).json({
+      message: "Register Error"
+    });
   }
 });
 
